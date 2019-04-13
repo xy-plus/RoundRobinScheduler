@@ -1,4 +1,7 @@
 #![no_std]
+#![feature(alloc)]
+
+extern crate alloc;
 
 use alloc::vec::Vec;
 
