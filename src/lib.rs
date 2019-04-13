@@ -1,3 +1,5 @@
+#![no_std]
+
 use alloc::vec::Vec;
 
 #[derive(Default)]
