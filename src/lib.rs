@@ -35,7 +35,7 @@ impl RRScheduler {
         rr
     }
     
-    fn push(&mut self, tid : usize) {
+    pub fn push(&mut self, tid : usize) {
         let tid = tid + 1;
         if tid + 1 > self.threads.len() {
             self.threads.resize_with(tid + 1, Default::default);
@@ -53,7 +53,7 @@ impl RRScheduler {
         self.threads[tid].next = 0;
     }
 
-    fn pop(&mut self) -> Option<usize> {
+    pub fn pop(&mut self) -> Option<usize> {
         let ret = self.threads[0].next;
         if ret != 0 {
             let next = self.threads[ret].next;
@@ -70,7 +70,7 @@ impl RRScheduler {
         }
     }
 
-    fn tick(&mut self) -> bool{
+    pub fn tick(&mut self) -> bool{
         let tid = self.current;
         //println!("tick in scheduler, tid : {}", tid -1);
         if tid != 0 {
@@ -85,7 +85,7 @@ impl RRScheduler {
         return true;
     }
 
-    fn exit(&mut self, tid : usize) {
+    pub fn exit(&mut self, tid : usize) {
         let tid = tid + 1;
         if self.current == tid {
             self.current = 0;
